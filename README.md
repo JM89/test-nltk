@@ -123,6 +123,7 @@ As a prerequisite for applying K-Means clustering,
 - Each document is a tuple of N Numbers with N the total number of distinct words in all documents
 
 For every document of the historic set or for a new article, we will determine the K-Nearest Neighbors and choose depending on the number of neighboring items.
+
 ![Step 3](images/nltk09.png)
 
 Each tuple of N numbers can be represented as 
