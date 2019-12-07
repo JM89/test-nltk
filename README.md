@@ -46,7 +46,7 @@ Stemming
 - When a word as same meaning but is treated differently because of their suffixes.
 - Example: close, closed, closely, closer
 
-Cf. Example1.py
+[Example1.py](Example1.py)
 
 ## Rule vs ML
 
@@ -82,7 +82,7 @@ In order to summarize a text, we will need to:
 - Compute significance score for sentences based on words they contain: give a weight on the most important words. Sum of all important words.
 - Pick the top most significant sentences
 
-Cf. Example2.py
+[Example2.py](Example2.py)
 
 ### Classifying Text Using Machine Learning: Understanding the Clustering Workflow
 
@@ -145,4 +145,4 @@ The distance between grp of points is used to create cluster. K is the number of
 - Replace recursively the centroids so it includes all points: this is convergence
 - Point (3) means to find the new means / centroids of the clusters
 
-Cf. Example3.py
+[Example3.py](Example3.py)
