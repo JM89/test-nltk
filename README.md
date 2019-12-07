@@ -1,9 +1,9 @@
 # Getting Started with Natural Language Processing with Python
 
-## Getting Started
+## Installation
 
-1. Install Python (Link)
-2. Install PyCharm Community edition (JetBrain free IDE) (Link)
+1. Install [Python](https://www.python.org/downloads/)
+2. Install [PyCharm IDE - Community edition](https://www.jetbrains.com/pycharm/download/#section=windows)
 3. Install NLTK package. File > Settings > Project Settings > Add (+)
 
 ![3a](images/nltk01.png)
@@ -13,13 +13,22 @@
 4. NLTK needs to download punkt. After import nltk, add nltk.download(‘punkt’). This line is not required anymore after done once.
 5. Right click on file and Run
 
-## Notes
+## Natural Language Processing Concepts & Approaches
 
-Natural Language Processing (NPL): 
-- Enable computers to derive meaning from natural language. 
-- Example of use: Auto-tagging, autocomplete, auto-summarizing, classification of a book/articles in themes... sentimental Analysis (What is the market sentiment around Apple’s latest product launch? How are voters feeling towards a particular candidate? What do customers think about a particular brand?)
+NLP allows computers to derive meaning from natural language.
 
-## Tasks in NLP
+### Usage
+
+* Auto-tagging
+* autocomplete
+* auto-summarizing
+* classification of a book/articles in themes
+* sentimental Analysis: What is the market sentiment around Apple’s latest product launch? How are voters feeling towards a particular candidate? What do customers think about a particular brand?
+* ...
+
+### Main steps
+
+[Example1.py](Example1.py)
 
 Tokenization
 - Breaking down text into words and sentences
@@ -28,63 +37,56 @@ Stopword Removal
 - Filtering common words
 
 N-Grams
-- Identifying commonly occurring groups of words
-- Group of words which goes usually together
+- Identify commonly occurring groups of words that usually goes together
 - Example: New York is a great city. Have you ever been to New York? -> New York is a bigram.
 
 Word Sense Disambiguation
-- Identifying the context in which the word occurs
-- Different meaning depending on the context.
+- Identifying the context in which the word occurs and infer its meaning
 - Example: The movie had really cool effects. I would like a tall glass of cool water. 
 
 Parts of Speech
-- Identifying Part-of-Speech
-- Determine if a word is a Noun, Verb, and Adverb…
+- Determine if a word is a Noun, Verb, and Adverb...
 
 Stemming
-- Removing ends of the words
-- When a word as same meaning but is treated differently because of their suffixes.
+- Remove the end of some words, that keep same meaning without their suffixes
 - Example: close, closed, closely, closer
 
-[Example1.py](Example1.py)
+### Rule vs ML
 
-## Rule vs ML
+When filtering spam emails, we have two different approaches:
 
-Filter spam emails from no spam emails (ham):
-- Expressing rules are difficult to express for humans, but if you have historical data is available and Patters/Relationships are dynamic, then you can use ML.
+![2 approaches](images/nltk03.png)
 
-### Rule-based approach
+Expressing static rules can be tedious for humans, but if you have  some historical data available, ML can be used to find patterns/relationships dynamically.
 
-![Rule-based approach](images/nltk03.png)
+### Strategy for ML
 
-### ML-based approach
+**Step 1 - Pick you problem**
 
-![ML-based approach](images/nltk04.png)
+You need to identify which type of problem we need to solve. It can fall into multiple categories, for instance classification and clustering. 
+- Classsification: the groups/classes are known beforehand. We have a classifier (a set of instances for which the correct category membership is known) and training data. For instance tweets which are correctly classified as positive or negative (binary) or articles by pre-defined themes (multiple)
+- Clustering: the groups are unknown beforehand. The groups are determined by exploring the data, find patterns which exist in the data. The groups will then be labelled as themes, topics. 
 
-Step 1 - Pick you problem
-- Identifying which type of problem we need to solve
-- Pick your problem can fall into multiple categories. Two of these categories are classifications and clustering. 
-- In a classification type of problem, we have a classifier (a set of instances for which the correct category membership is known) and training data. For instance tweets which are correctly classified as positive or negative (Sentiment Analysis), or spam detection (spam / ham category).
-- In the case of clustering, the groups are unknown beforehand. The groups are determined by exploring the data, find patterns which exist in the data. The groups will then be labelled as themes, topics. 
+**Step 2 - Represent data using numeric attributes**
 
-Step 2 - Represent data
-- Represent data using numeric attributes
-- One way of doing this is by using the Term Frequency and TF-IDF methodologies.
+One way of doing this is by using the Term Frequency and TF-IDF methodologies.
 
-Step 3 - Apply an algorithm
-- Use a standard algorithm to find a model
-- It will depend of the kind of problems: For classification: Naïve Bayes or SVM can be used for instance. For clustering: K-Means, hierarchical clustering
+**Step 3 - Apply an algorithm**
 
-## Example - Auto-summarizing Text
+First start by a standard algorithm to find a model. It will depend of the kind of problems: For classification: Naïve Bayes or SVM can be used for instance. For clustering: K-Means, hierarchical clustering..
+
+## Example 01 - Auto-summarizing Text
+
+[Example2.py](Example2.py)
 
 In order to summarize a text, we will need to: 
 - Find the most important words: authors tend to repeat the words which are more important. Most repeated words will define its importance. The higher the frequency, the higher the importance. It is important to remove the stop words, as they will be the ones repeated the most and confuse the auto summarizing algorithm.
 - Compute significance score for sentences based on words they contain: give a weight on the most important words. Sum of all important words.
 - Pick the top most significant sentences
 
-[Example2.py](Example2.py)
+## Example 02 - Classifying Text Using ML Clustering Algorithm
 
-### Classifying Text Using Machine Learning: Understanding the Clustering Workflow
+[Example3.py](Example3.py)
 
 **Step 1 - Pick your problem**
 
@@ -96,7 +98,7 @@ For clustering to work, we should be able to
 
 **Step 2 - Represent your data**
 
-Use meaningful numeric attributes to represent text, for instance, we could define our features the following way:
+Use meaningful numeric attributes to represent text, for instance, we could define our features by creating a list representing all the words that appears in any text:
 
 ![Step 2a](images/nltk05.png)
 
@@ -104,45 +106,44 @@ Then, we associate a frequency to it...:
 
 ![Step 2b](images/nltk06.png)
 
-This model is called Bags of Words. But here, the information on the order of words is lost.
+This model of **Term Frequency Representation** is called **Bags of Words**. But here, the information on the order of words is lost.
 
-The words which does not appear frequently across multiples articles, can be used to different a document from others: 
+The words which does not occur more rarely, can be used to differentiate documents from each other. This is how we deduce the TF-IDF approach:
 
-![Step 2c](images/nltk07.png)
-
-This is where we use the TF-IDF approach:
-
-![Step 2d](images/nltk08.png)
+```
+Weight = 1 / number of documents where the word is used
+```
 
 **Step 3 - Apply an algorithm**
 
-For new article, we have a classic classification problem:
-- Problem statement
-- Features: represent the training data and test data using numerical attributes
-- Training: train a model using the training data
-- Test: test the model using test data
-
-![Step 3](images/nltk09.png)
+We choose to use a clustering algorithm since we don't know the groups beforehand.
 
 As a prerequisite for applying K-Means clustering, 
-- Documents are represented using TF-IDF
+- Documents are represented using TF-IDF (historic data and new articles)
 - Each document is a tuple of N Numbers with N the total number of distinct words in all documents
 
-Each tuple of N numbers can be represented as a point in a N-dimensional hypercube (a vector of N dimensions)
+For every document of the historic set or for a new article, we will determine the K-Nearest Neighbors and choose depending on the number of neighboring items.
+![Step 3](images/nltk09.png)
 
-![k-means clustering 01](images/nltk10.png)
+Each tuple of N numbers can be represented as 
+- a tuple of N numbers
+- a point in a N-dimensional hypercube 
+-  vector of N dimensions
 
 ![k-means clustering 02](images/nltk11.png)
 
-The distance between grp of points is used to create cluster. K is the number of clusters you want to group your points into.
+The distance between group of points is used to create cluster. K is the number of clusters you want to group your points into.
+
+1. Initialize a set of points as the "K" means or centroids of the cluster
 
 ![k-means clustering ex1](images/nltk12.png)
 
+2. Assign each point to the nearest K means
+
 ![k-means clustering ex2](images/nltk13.png)
+
+3. Recalculate the new means of the cluster. This will replace recursively all the centroids so it includes all points: also called convergence. 
 
 ![k-means clustering ex3](images/nltk14.png)
 
-- Replace recursively the centroids so it includes all points: this is convergence
-- Point (3) means to find the new means / centroids of the clusters
-
-[Example3.py](Example3.py)
+Repeat 2 and 3 until the mean don't change anymore. 
