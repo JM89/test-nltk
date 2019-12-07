@@ -6,9 +6,9 @@
 2. Install PyCharm Community edition (JetBrain free IDE) (Link)
 3. Install NLTK package. File > Settings > Project Settings > Add (+)
 
-![3a](images/ntlk01.png)
+![3a](images/nltk01.png)
 
-![3b](images/ntlk02.png)
+![3b](images/nltk02.png)
 
 4. NLTK needs to download punkt. After import nltk, add nltk.download(‘punkt’). This line is not required anymore after done once.
 5. Right click on file and Run
@@ -55,11 +55,11 @@ Filter spam emails from no spam emails (ham):
 
 ### Rule-based approach
 
-![Rule-based approach](images/ntlk03.png)
+![Rule-based approach](images/nltk03.png)
 
 ### ML-based approach
 
-![ML-based approach](images/ntlk04.png)
+![ML-based approach](images/nltk04.png)
 
 Step 1 - Pick you problem
 - Identifying which type of problem we need to solve
@@ -98,21 +98,21 @@ For clustering to work, we should be able to
 
 Use meaningful numeric attributes to represent text, for instance, we could define our features the following way:
 
-![Step 2a](images/ntlk05.png)
+![Step 2a](images/nltk05.png)
 
 Then, we associate a frequency to it...:
 
-![Step 2b](images/ntlk06.png)
+![Step 2b](images/nltk06.png)
 
 This model is called Bags of Words. But here, the information on the order of words is lost.
 
 The words which does not appear frequently across multiples articles, can be used to different a document from others: 
 
-![Step 2c](images/ntlk07.png)
+![Step 2c](images/nltk07.png)
 
 This is where we use the TF-IDF approach:
 
-![Step 2d](images/ntlk08.png)
+![Step 2d](images/nltk08.png)
 
 **Step 3 - Apply an algorithm**
 
@@ -122,7 +122,7 @@ For new article, we have a classic classification problem:
 - Training: train a model using the training data
 - Test: test the model using test data
 
-![Step 3](images/ntlk09.png)
+![Step 3](images/nltk09.png)
 
 As a prerequisite for applying K-Means clustering, 
 - Documents are represented using TF-IDF
@@ -130,17 +130,17 @@ As a prerequisite for applying K-Means clustering,
 
 Each tuple of N numbers can be represented as a point in a N-dimensional hypercube (a vector of N dimensions)
 
-![k-means clustering 01](images/ntlk10.png)
+![k-means clustering 01](images/nltk10.png)
 
-![k-means clustering 02](images/ntlk11.png)
+![k-means clustering 02](images/nltk11.png)
 
 The distance between grp of points is used to create cluster. K is the number of clusters you want to group your points into.
 
-![k-means clustering ex1](images/ntlk12.png)
+![k-means clustering ex1](images/nltk12.png)
 
-![k-means clustering ex2](images/ntlk13.png)
+![k-means clustering ex2](images/nltk13.png)
 
-![k-means clustering ex3](images/ntlk14.png)
+![k-means clustering ex3](images/nltk14.png)
 
 - Replace recursively the centroids so it includes all points: this is convergence
 - Point (3) means to find the new means / centroids of the clusters
