@@ -26,28 +26,28 @@ NLP allows computers to derive meaning from natural language.
 * sentimental Analysis: What is the market sentiment around Apple’s latest product launch? How are voters feeling towards a particular candidate? What do customers think about a particular brand?
 * ...
 
-### Main steps
+### Main tasks
 
 [Example1.py](Example1.py)
 
-Tokenization
+**Tokenization**
 - Breaking down text into words and sentences
 
-Stopword Removal
+**Stopword Removal**
 - Filtering common words
 
-N-Grams
+**N-Grams**
 - Identify commonly occurring groups of words that usually goes together
 - Example: New York is a great city. Have you ever been to New York? -> New York is a bigram.
 
-Word Sense Disambiguation
+**Word Sense Disambiguation**
 - Identifying the context in which the word occurs and infer its meaning
 - Example: The movie had really cool effects. I would like a tall glass of cool water. 
 
-Parts of Speech
+**Parts of Speech**
 - Determine if a word is a Noun, Verb, and Adverb...
 
-Stemming
+**Stemming**
 - Remove the end of some words, that keep same meaning without their suffixes
 - Example: close, closed, closely, closer
 
