@@ -77,12 +77,7 @@ First start by a standard algorithm to find a model. It will depend of the kind 
 
 ## Example 01 - Auto-summarizing Text
 
-[Example2.py](Example2.py)
-
-In order to summarize a text, we will need to: 
-- Find the most important words: authors tend to repeat the words which are more important. Most repeated words will define its importance. The higher the frequency, the higher the importance. It is important to remove the stop words, as they will be the ones repeated the most and confuse the auto summarizing algorithm.
-- Compute significance score for sentences based on words they contain: give a weight on the most important words. Sum of all important words.
-- Pick the top most significant sentences
+[Auto_summarizing_Text Jupyter Notebook](Auto_summarizing_Text.ipynb)
 
 ## Example 02 - Classifying Text Using ML Clustering Algorithm
 
